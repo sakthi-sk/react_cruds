@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Edit from './pages/edit/Edit';
+ import Home from './pages/home/Home';
+import React, { useState } from 'react'
+  import{Routes,Route} from "react-router-dom"
 function App() {
+
+    const [prodectList,SetProdectList]=useState('')
+    const [price,setPrice]=useState('')
+    const [oldPrice,setOldPrice]=useState('')
+    const [data,setData]=useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Routes>
+      <Route path='/' element={ <Home
+      prodectList={prodectList}
+      SetProdectList={SetProdectList} 
+      price={price}
+      setPrice={setPrice}
+      oldPrice={oldPrice}
+      setOldPrice={setOldPrice}
+      data={data}
+      setData={setData}
+
+      />}/>
+      <Route path='/edit/:id' element={<Edit
+        data={data}
+      setData={setData}
+      />}/>
+    </Routes>
+       
     </div>
   );
 }
